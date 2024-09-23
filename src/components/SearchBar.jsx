@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setSearchTerm } from "../reducers/ItemSlice";
+import { TextField } from "@mui/material";
+import "../App.css";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -9,7 +11,15 @@ const SearchBar = () => {
     dispatch(setSearchTerm(e.target.value));
   };
 
-  return <input type="text" placeholder="Search..." onChange={handleSearch} />;
+  return (
+    <TextField
+      label="Search"
+      type="text"
+      placeholder="Search..."
+      onChange={handleSearch}
+      className="input"
+    />
+  );
 };
 
 export default SearchBar;
