@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import "./App.css";
+import ItemList from "./components/ItemList";
+import SearchBar from "./components/SearchBar";
+import { setItems } from "./reducers/ItemSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const items = ["Apple", "Banana", "Orange", "Grape", "Pineapple"];
+    dispatch(setItems(items));
+  }, [dispatch]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Item Filter</h1>
+      <SearchBar />
+      <h1>Items List</h1>
+      <ItemList />
     </div>
   );
 }
